@@ -5,7 +5,7 @@ from reportlab.pdfgen import canvas
 from reportlab.lib.units import inch, mm
 import csv
 
-
+zxzx
 imagem = "./certificados.png" 
 def  reconhecer_imagem():
     if not os.path.exists(imagem):
