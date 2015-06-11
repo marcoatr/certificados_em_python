@@ -39,131 +39,171 @@ def spliter_linhas(tamanho_texto2, texto2 ,*texto2_1):
 	return texto2_1, texto2_2
 
 def info_cursos(y, *informacoes):
-	if y == 0: #pic
+	#curso = ["PIC","Processamento Digital de Imagem","AutoCad", "Android", "Arduíno", "Confecção de Placas", "FPGA e VHDL", "HP50g", "MatLab", "Msp430", "ShellScript", "SolidWorks","intel Galileo", "LaTeX", "Processamento Digital de Áudio","Sistemas Embarcados"]
+	if y == 14: #pic
+		nome_curso = "PIC"
 		dias = "18 a 21 de maio"
 		horario = "de 07h30min a 12h30min"
 		carga_horaria = "20 horas"
 		categoria = "Curso"
-	elif y == 1: #pdi
+	elif y == 12: #pdi
+		nome_curso = "Processameno Digital de Imagem"
 		dias = "18 a 22 de maio"
 		horario = "de 18h30min a 22h30min"
 		carga_horaria = "20 horas"
 		categoria = "Curso"
-	elif y == 2: #AutoCad
+	elif y == 17: #AutoCad
+		nome_curso = "AutoCad"
 		dias = "18 a 22 de maio"
 		horario = "de 07h30min a 10h00min"
 		carga_horaria = "10 horas"
 		categoria = "Minicurso"
-	elif y == 3: #Android
+	elif y == 20: #Android
+		nome_curso = "Android"
 		dias = "18 a 22 de maio"
 		horario = "de 20h30min a 22h30min"
 		carga_horaria = "10 horas"
 		categoria = "Minicurso"
-	elif y == 4: #Arduino
+	elif y == 18: #Arduino
+		nome_curso = "Arduino"
 		dias = "18 a 22 de maio"
 		horario = "de 13h30min a 16h00min"
 		carga_horaria = "10 horas"
 		categoria = "Minicurso"
-	elif y == 5: #confecção
+	elif y == 19: #confecção
+		nome_curso = "Confecção de Placas"
 		dias = "18 a 21 de maio"
 		horario = "de 20h30min a 22h30min"
 		carga_horaria = "10 horas"
 		categoria = "Minicurso"
-	elif y == 6: #fpga
+	elif y == 16: #fpga
+		nome_curso = "FPGA e VHDL"
 		dias = "18 a 21 de maio"
 		horario = "de 13h30min a 16h00min"
 		carga_horaria = "10 horas"
 		categoria = "Minicurso"
-	elif y == 7: #hp
+	elif y == 15: #hp
+		nome_curso = "Hp50g"
 		dias = "18 a 22 de maio"
 		horario = "de 13h30min a 16h00min"
 		carga_horaria = "10 horas"
 		categoria = "Minicurso"
 	elif y == 8: #matlab
+		nome_curso = "MatLab"
 		dias = "18 a 22 de maio"
 		horario = "de 07h30min a 10h00min"
 		carga_horaria = "10 horas"
 		categoria = "Minicurso"
-	elif y == 9: #msp
+	elif y == 21: #msp
+		nome_curso = "Msp430 LaunchPad"
 		dias = "18 a 22 de maio"
 		horario = "de 07h30min a 10h00min"
 		carga_horaria = "10 horas"
 		categoria = "Minicurso"
 	elif y == 10: #shell
+		nome_curso = "ShellScript"
 		dias = "18 a 22 de abril"
 		horario = "de 07h30min a 10h00min"
 		carga_horaria = "10 horas"
 		categoria = "Minicurso"
 	elif y == 11: #solid
+		nome_curso = "SolidWorks"
 		dias = "18 a 22 de abril"
 		horario = "de 13h30min a 16h00min"
 		carga_horaria = "10 horas"
 		categoria = "Minicurso"
-	elif y == 12: #galileo
+	elif y == 120: #galileo
+		nome_curso = "Intel Galileo"
 		dias = "19 e 21 de abril"
 		horario = "de 13h30min a 16h00min"
 		carga_horaria = "5 horas"
 		categoria = "Workshop"
-	elif y == 13: #latex
+	elif y == 130: #latex
+		nome_curso = "LaTeX"
 		dias = "19 e 21 de abril"
 		horario = "de 09h00min a 12h00min"
 		carga_horaria = "6 horas"
 		categoria = "Workshop"
-	elif y == 14: #pda
+	elif y == 140: #pda
+		nome_curso = "Processamento Digital de Áudio"
 		dias = "18, 20 e 22 de abril"
 		horario = "de 13h30min a 16h00min"
 		carga_horaria = "7 horas e 30 minutos"
 		categoria = "Workshop"
-	elif y == 15: #sist
+	elif y == 150: #sist
+		nome_curso = "Sistemas Embarcados"
  		dias = "20 de abril"
 		horario = "de 19h30min a 22h30min"
 		carga_horaria = "3 horas"
 		categoria = "Sistemas Embarcados"
-	return dias,horario,carga_horaria,categoria
+	return dias,horario,carga_horaria,categoria,nome_curso
 
 
 tipo = input("1 para palestra e 2 para curso: ")
 
 if tipo == 2:
-	nome = "Carlos Henrique Dos Santos De Carvalho"
-	curso = ["PIC","Processamento Digital de Imagem","AutoCad", "Android", "Arduíno", "Confecção de Placas", "FPGA e VHDL", "HP50g", "MatLab", "Msp430", "ShellScript", "SolidWorks","intel Galileo", "LaTeX", "Processamento Digital de Áudio","Sistemas Embarcados"]
-	y = input("curso desejado: ")
-	
-	dias = ""
-	horario = ""
-	carga_horaria = ""
-	categoria = ""
-	info_cursos_tupla = info_cursos(y,dias,horario,carga_horaria,categoria)
+	lista_nomes_sem_tratamento = csv.reader(open("Alunos.csv","rb"))
+	nomes = {}
+
+	for row in lista_nomes_sem_tratamento:		
+		row[1] = row[1].replace("Ã§","Ç")
+		row[1] = row[1].replace("Ã‡","Ç")
+		row[1] = row[1].replace("Ã©","É")
+		row[1] = row[1].replace("Ã£","ããã")
+		row[1] = row[1].replace("Ã­","Í")
+		row[1] = row[1].replace("ããã", "Ã")
+		row[1] = row[1].replace("é","É")
+		nomes[int(row[0])] = row[1]	
+
+	lista_eventos_sem_tratamento = csv.reader(open("Eventos.csv","rb"))
+	eventos = {}
+	for row in lista_eventos_sem_tratamento:
+		eventos[int(row[0])] = row[1]
+
+	lista_inscrioes = csv.reader(open("Inscricoes.csv","rb"))
 
 
-	c = canvas.Canvas("Certificados/" + nome + "_" + info_cursos_tupla[3] + "_" + curso[y] +".pdf", pagesize=landscape(A4))
-	width, height = A4
-	c.drawImage(imagem, 0, 0, height,width) 
-	
-	c.setFont("Times-Roman", 19)
-	c.drawString(35,270,"A comissão organizadora da Semana de Atualização em Engenharia Elétrica (SEATEL) certifica que")
-	tamanho = len(nome)
-	
-	if (tamanho < 36):
-		c.setFont("Helvetica-Bold", 35)	
-		c.drawString(35 + (36 - tamanho)*11  ,230,nome.upper())
-	else:
-		c.setFont("Helvetica-Bold", 28)	
-		c.drawString(45 ,230,nome.upper())
+	for row in lista_inscrioes:
+
+		nome = nomes.get(int(row[1]))
+		y = int(row[2])
+		
+		nome_curso = ""
+		dias = ""
+		horario = ""
+		carga_horaria = ""
+		categoria = ""
+		info_cursos_tupla = info_cursos(y,dias,horario,carga_horaria,categoria,nome_curso)
 
 
-	c.setFont("Times-Roman", 19)
-	texto2 = "assitiu ao " + info_cursos_tupla[3] + " de " + curso[y] + " no(s) dia(s) " + info_cursos_tupla[0] + " no período " + info_cursos_tupla[2] + ", " + "totalizando " + info_cursos_tupla[1] + "."
-	tamanho_texto2 = len(texto2)
-	texto2_1 = ""
-	texto2_2 = ""
-	tupla1 = spliter_linhas(tamanho_texto2,texto2,texto2_1,texto2_2)
-			
-	c.drawString(35 + (101 - len(tupla1[0]))*4, 200, tupla1[0])
-	c.drawString(35 + (101 - len(tupla1[1]))*4, 180,tupla1[1])
+		c = canvas.Canvas("Certificados 2/" + nome + "_" + info_cursos_tupla[3] + "_" + info_cursos_tupla[4] + ".pdf", pagesize=landscape(A4))
+		width, height = A4
+		c.drawImage(imagem, 0, 0, height,width) 
+		
+		c.setFont("Times-Roman", 19)
+		c.drawString(35,270,"A comissão organizadora da Semana de Atualização em Engenharia Elétrica (SEATEL) certifica que")
+		tamanho = len(nome)
+		
+		if (tamanho < 36):
+			c.setFont("Helvetica-Bold", 35)	
+			c.drawString(35 + (36 - tamanho)*11  ,230,nome.upper())
+		else:
+			c.setFont("Helvetica-Bold", 28)	
+			c.drawString(45 ,230,nome.upper())
 
-	c.showPage()
-	c.save()
+
+		c.setFont("Times-Roman", 19)
+		texto2 = "assitiu ao " + info_cursos_tupla[3] + " de " + info_cursos_tupla[4] + " no(s) dia(s) " + info_cursos_tupla[0] + " no período " + info_cursos_tupla[1] + ", " + "totalizando " + info_cursos_tupla[2] + "."
+		tamanho_texto2 = len(texto2)
+		texto2_1 = ""
+		texto2_2 = ""
+		tupla1 = spliter_linhas(tamanho_texto2,texto2,texto2_1,texto2_2)
+				
+		c.drawString(35 + (101 - len(tupla1[0]))*4, 200, tupla1[0])
+		c.drawString(35 + (101 - len(tupla1[1]))*4, 180,tupla1[1])
+
+		c.showPage()
+		c.save()
 
 
 if tipo == 1:
